@@ -1,5 +1,6 @@
 from utils.http_methods import HttpMethods
 from utils.jsons import json_creating_new_place
+from utils.logger import Logger
 
 """Testing methods for api"""
 base_url = 'https://rahulshettyacademy.com'
@@ -27,10 +28,29 @@ class GoogleMapsApi:
         """Checking new location method"""
 
         get_url = f'{base_url}{get_resource}{key}&place_id={place_id}'
+
+        # Log the request
+        Logger.add_request(url=get_url, method="GET")
         print(get_url)
+
         result_get = HttpMethods.get(get_url)
+
+        # Log the response
+        Logger.add_response(result=result_get)
         print(result_get.text)
+
         return result_get
+
+
+    # @staticmethod
+    # def checking_location_by_get(place_id):
+    #     """Checking new location method"""
+    #
+    #     get_url = f'{base_url}{get_resource}{key}&place_id={place_id}'
+    #     print(get_url)
+    #     result_get = HttpMethods.get(get_url)
+    #     print(result_get.text)
+    #     return result_get
 
     @staticmethod
     def put_new_location_by_put(place_id):

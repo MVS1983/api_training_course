@@ -1,6 +1,5 @@
 import requests
 
-
 class HttpMethods:
     """Creating Http class methods"""
     headers = {'Content-Type': 'application/json'}
